@@ -1,2 +1,2 @@
-0 search/School
-!:mime text/SCHOOL
+0 string SCHOOL School data
+!:mime School
