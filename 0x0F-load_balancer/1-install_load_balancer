@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #  Install load balancer
 sudo apt-get -y update
-sudo apt-get -y install haproxy=1.6.\*
+sudo apt-get -y install haproxy
 echo "frontend localnodes
     bind *:80
     mode http
@@ -11,5 +11,5 @@ echo "frontend localnodes
     balance roundrobin
     server 62718-web-01 54.197.113.231:80
     server 62718-web-02 54.173.86.82:80
-" >> /etc/haproxy/haproxy.cfg
+" >> sudo /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
