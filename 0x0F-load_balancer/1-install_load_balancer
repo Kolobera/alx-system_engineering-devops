@@ -10,6 +10,6 @@ sed -i -e '$ afrontend http_front \n\tbind *:80 \
 \nbackend http_rear \
 \tbalance		roundrobin \
 \tserver 62718-web-01		54.197.113.231:80 check \
-\tserver 62718-web-02		54.173.86.82:80 check' /etc/haproxy/haproxy.cfg
+\tserver 62718-web-02		100.24.206.188:80 check' /etc/haproxy/haproxy.cfg
 
 service haproxy restart
