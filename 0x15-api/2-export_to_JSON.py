@@ -24,9 +24,13 @@ if __name__ == '__main__':
                 file.write("[")
                 lp = []
                 for todo in todos:
-                    lm="{\"task\": "
-                    lm+="\"{}\", \"completed\": {}, \"username\": \"{}\"".format(todo.get('title'), str(todo.get('completed')).lower(), user_name)
-                    km=lm+"}"
+                    lm = "{\"task\": "
+                    lm += "\"{}\", \"completed\": {}, \"username\": \"{}\"".format(
+                                                                            todo.get('title'),
+                                                                            str(todo.get('completed')).lower(),
+                                                                            user_name
+                                                                            )
+                    km = lm + "}"
                     lp.append(km)
                 file.write(", ".join(lp))
                 file.write("]}")

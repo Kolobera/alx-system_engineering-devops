@@ -20,4 +20,9 @@ if __name__ == '__main__':
             file_name = f"{id}.csv"
             with open(file_name, "w") as file:
                 for todo in todos:
-                    file.write(f"\"{id}\",\"{user_name}\",\"{todo.get('completed')}\",\"{todo.get('title')}\"\n")
+                    file.write(
+                            f"\"{id}\",
+                            \"{user_name}\",
+                            \"{todo.get('completed')}\",
+                            \"{todo.get('title')}\"\n"
+                    )
