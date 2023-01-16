@@ -1,30 +1,18 @@
 #!/usr/bin/python3
-"""A script that gathers data from an API.
-"""
-import re
+""" Python CVS """
+
+import csv
 import requests
-import sys
-
-
-API_URL = 'https://jsonplaceholder.typicode.com'
-'''The API's URL.'''
-
+from sys import argv
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        if re.fullmatch(r'\d+', sys.argv[1]):
-            id = int(sys.argv[1])
-            user_res = requests.get('{}/users/{}'.format(API_URL, id)).json()
-            todos_res = requests.get('{}/todos'.format(API_URL)).json()
-            user_name = user_res.get('name')
-            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
-            with open('{}.csv'.format(id), 'w') as file:
-                for todo in todos:
-                    file.write(
-                        '"{}","{}","{}","{}"\n'.format(
-                            id,
-                            user_name,
-                            todo.get('completed'),
-                            todo.get('title')
-                        )
-                    )
+    user_id = argv[1]
+    url_todos = "https://jsonplaceholder.typicode.com/todos?userId={}"
+    api_todos = requests.get(url_todos.format(user_id), verify=False).json()
+    url_names = "https://jsonplaceholder.typicode.com/users/{}"
+    name_users = requests.get(url_names.format(user_id), verify=False).json()
+    with open("{}.csv".format(user_id), 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        for task in api_todos:
+            writer.writerow([int(user_id), name_users.get('username'),
+                            task.get('completed'), task.get('title')])
