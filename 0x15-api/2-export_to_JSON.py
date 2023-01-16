@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-'''A script that gathers data from an API.
-'''
+"""A script that gathers data from an API.
+"""
 import re
 import requests
 import sys
