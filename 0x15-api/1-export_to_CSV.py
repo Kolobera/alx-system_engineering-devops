@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-"""A script that gathers data from an API and export it to CSV file."""
+"""A script that gathers data from an API.
+"""
 import re
 import requests
 import sys
 
 
 API_URL = 'https://jsonplaceholder.typicode.com'
-"""The API's URL."""
+'''The API's URL.'''
 
 
 if __name__ == '__main__':
@@ -17,12 +18,13 @@ if __name__ == '__main__':
             todos_res = requests.get('{}/todos'.format(API_URL)).json()
             user_name = user_res.get('name')
             todos = list(filter(lambda x: x.get('userId') == id, todos_res))
-            file_name = f"{id}.csv"
-            with open(file_name, "w") as file:
+            with open('{}.csv'.format(id), 'w') as file:
                 for todo in todos:
                     file.write(
-                            f"\"{id}\",
-                            \"{user_name}\",
-                            \"{todo.get('completed')}\",
-                            \"{todo.get('title')}\"\n"
+                        '"{}","{}","{}","{}"\n'.format(
+                            id,
+                            user_name,
+                            todo.get('completed'),
+                            todo.get('title')
+                        )
                     )
