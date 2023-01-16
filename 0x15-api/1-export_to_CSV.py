@@ -1,13 +1,12 @@
 #!/usr/bin/python3
-'''A script that gathers data from an API.
-'''
+"""A script that gathers data from an API and export it to CSV file."""
 import re
 import requests
 import sys
 
 
 API_URL = 'https://jsonplaceholder.typicode.com'
-'''The API's URL.'''
+"""The API's URL."""
 
 
 if __name__ == '__main__':
